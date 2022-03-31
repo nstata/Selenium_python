@@ -1,0 +1,116 @@
+Setup of Hybrid Framework:Selenium with Python.Learnings and Observations
+
+A) Creating project and Installing required packages(click on file->settings->project interpretor->click on + to add packages// other way is cmd line -> pipenv install pytest and selenium)
+- Selenium libraries
+- Pytest
+- Pytest HTML for reports
+- Pytest Xdist for running tests parallel
+- Open Pyexcel  MS Excel support
+- Allure-pytest  -allure reports
+
+B)Creating Folder Structure:
+
+1)Page Objects(Package)
+2)Test Cases (Package)
+3)utilities (Package)
+4)Test data(Folder)
+5)Configurations(Folder)
+6)Logs (Folder)
+7)Screenshots(Folder)
+8)Reports_HTML(Folder)
+9)Run.bat
+
+C) Automating Login test cases:
+ - create LoginPage object class under pageobjects folder
+ - create a folder for login test cases in TestCases folder called login_test
+ - create conftest file under TestCases 
+ 
+D)Read common values from ini files
+ - create an config.ini file under Configurations folder (add all the common values such as page url, username and pwd)
+ - create read_properties.py file in utilities folder 
+ - Replace the hard coded values in login test cases 
+ 
+E)Capture screenshots for failures
+ - update Login test cases with screenshots
+ 
+F)Add logs to the test cases
+ - Add customlogger.py under Utilities package.
+ - Add logs to login test cases.
+ - create automation.log file in runtime ,add force= True after giving filename = relative path
+ 
+G)Run tests on Desired Browser/Cross Browser/Parallel
+ - update conftest.py file withre quired Fixtureswhich will accept command line arguments of browser name.
+ - pass browser name as the argument
+ 
+
+
+
+Additional Notes:
+
+== Choosing Directory vs package:
+Use "Python Package" when some modules in there needs to be imported. 
+PyCharm will automatically create an __init__.py for the directory.
+The package wil have a dot in the icon.
+
+
+
+
+ 
+== When you write locators in page object class , we define it as class level attribute.
+ It is of type tuple and is combijnation of( Locator type, query string)
+ 
+ 
+
+ 
+== Common WEBDRIVER calls:
+ 
+  - find_element
+  - current_url
+  - find_elements
+  - find_element_by
+  - get
+  - maximize_window
+  - quit
+  - refresh
+  - save_screenshot
+  - title
+  
+== Calls to Elements objects returned by find_elements methods:
+ 
+ - clear
+ - click
+ - find_element
+ - get_attribute
+ - get_property
+ - is_displayed
+ - location
+ - send_keys
+ - size
+ - text
+
+
+Page Object Models : To find out if it is a dropdown , select the inspect code and see if "select class" is found.
+_________________________________________________________________
+ ******************************************************************************************************************************************
+ 
+ Beta testing for fiskil.au API::
+ 
+(client_id): c8934b0e-ff53-4210-b0f8-1d1dc46fddb8
+ 
+ (client_secret): it6WZJYPA197TjGkBqHCuXgJqHmrrZVisuU1s9OHkaPdaH7E7h
+
+"access_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJDbGllbnRJRCI6ImM4OTM0YjBlLWZmNTMtNDIxMC1iMGY4LTFkMWRjNDZmZGRiOCIsIlRva2VuVVVJRCI6IjI1MjZlNjJmLWM3ZWMtNDY5Mi1iOTA4LTE2ZWZiNTAwZGFkMiIsIktleUlEIjoiYmU2OTEwNzktNzMxNi00NzA5LTkzYzUtZjhhYWQ0YzY0MzI4IiwiZXhwIjoxNjQ0MzE0MzU2LCJpYXQiOjE2NDQzMTM3NTZ9.Q5scWk6G43uqCQxboSuaLUdE4s1tXC8YV63Q_gQkMX0u7G3Id-nEGA9BtnSxozisVtPsZFQ03M-Q5xV6QXTlqg",
+       
+
+"end_user_id": "df5acce9-15ae-406d-9b4f-88a98c2b7a9d
+
+
+Beta testing an  API. Requirement was to generate end user ID by using the Access Token generated as per the steps. All the steps were followed but 403 Forbidden error was thrown.
+8 out of 10 times 
+
+
+
+
+
+
+
